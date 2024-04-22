@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Company search results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+<h1>Results</h1>
+<th:block th:each="company : ${result.items}">
+    <h2>Company</h2>
+    <table class="table table-striped table-bordered table-primary">
+        <thead style="display: table-header-group">
+        <tr>
+            <th>Title</th>
+            <th>No</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Creation Date</th>
+            <th>Address</th>
+        </tr>
+        <tbody>
+        <tr>
+            <td th:text="${company.title}"></td>
+            <td th:text="${company.company_number}"></td>
+            <td th:text="${company.company_type}"></td>
+            <td th:text="${company.company_status}"></td>
+            <td th:text="${company.date_of_creation}"></td>
+            <td th:text="${company.address.premises} + ', ' + ${company.address.address_line_1} + ', ' + ${company.address.locality} + ', ' + ${company.address.postal_code} + ', ' + ${company.address.country}"></td>
+        </tr>
+        <table class="table table-striped table-bordered table-secondary">
+            <thead>
+            <h3>Officers</h3>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Appointed On</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="officer : ${company.officers}">
+                <tr>
+                    <td th:text="${officer.name}"></td>
+                    <td th:text="${officer.officer_role}"></td>
+                    <td th:text="${officer.appointed_on}"></td>
+                    <td th:text="${officer.address.premises} + ', ' + ${officer.address.address_line_1} + ', ' + ${officer.address.locality} + ', ' + ${officer.address.postal_code} + ', ' + ${officer.address.country}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        </tbody>
+        </thead>
+    </table>
+</th:block>
+<a href="/TruProxyAPI/Company/Search">Search for another Company</a>
+</body>
+</html>

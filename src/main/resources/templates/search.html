@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Company search application</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+<h1>Company search application</h1>
+<form action="#" method="post" th:action="@{web/Search}" th:object="${search}">
+    <p>Company Name: <input th:field="*{companyName}" type="text"/></p>
+    <p>Company Number: <input th:field="*{companyNumber}" type="text"/></p>
+    <p><input type="submit" value="Search"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>
